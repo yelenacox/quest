@@ -62,6 +62,8 @@ namespace Quest
                 Hat adventurerHat = new Hat();
                 adventurerHat.ShininessLevel = 5;
 
+                Prize wonPrize = new Prize("Yay!");
+
                 Adventurer theAdventurer = new Adventurer(adventurerName, myRobe, adventurerHat);
 
                 Console.WriteLine(theAdventurer.GetDescription());
@@ -97,6 +99,7 @@ namespace Quest
                     Console.WriteLine("I guess you did...ok? ...sorta. Still, you should get out of my sight.");
                 }
 
+                wonPrize.ShowPrize(theAdventurer);
                 Console.Write("Would you like to play again? (Y/N): ");
                 string answer = Console.ReadLine().ToLower();
                 if (answer == "n")
