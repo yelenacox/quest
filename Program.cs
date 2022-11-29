@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 // Every class in the program is defined within the "Quest" namespace
 // Classes within the same namespace refer to one another without a "using" statement
@@ -39,6 +40,8 @@ namespace Quest
 ",
                     4, 20
                 );
+                Challenge threeMinusOne = new Challenge("3 - 1?", 2, 10);
+                Challenge rainbowColors = new Challenge("How many colors in a rainbow?", 7, 15);
 
                 // "Awesomeness" is like our Adventurer's current "score"
                 // A higher Awesomeness is better
@@ -75,11 +78,38 @@ namespace Quest
                 theAnswer,
                 whatSecond,
                 guessRandom,
-                favoriteBeatle
+                favoriteBeatle,
+                threeMinusOne,
+                rainbowColors
             };
 
+                List<Challenge> randomChallenges = new List<Challenge>();
+                List<int> indexList = new List<int>();
+                Random random = new Random();
+                int randomInteger;
+
+                do
+                {
+                    randomInteger = random.Next(challenges.Count);
+                    if (!indexList.Contains(randomInteger) && indexList.Count < 5)
+                    {
+                        indexList.Add(randomInteger);
+                        randomChallenges.Add(challenges[randomInteger]);
+                    };
+                } while (indexList.Contains(randomInteger));
+
+                //while loop
+                //generate random numbers 
+                //check if the number is already in list. 
+                //add to indexList if not already in list
+                //repeat until indexlist.Count is 5
+
+
+
+
+
                 // Loop through all the challenges and subject the Adventurer to them
-                foreach (Challenge challenge in challenges)
+                foreach (Challenge challenge in randomChallenges)
                 {
                     challenge.RunChallenge(theAdventurer);
                 }
@@ -106,8 +136,8 @@ namespace Quest
                 {
                     playAgain = false;
                 }
-
             }
+
         }
     }
 }
